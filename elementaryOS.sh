@@ -1,46 +1,41 @@
 #!/bin/bash
 
 #
-#   PostInstallation Guide for elementaryOS 0.4.1 Loki
+#   PostInstallation for elementaryOS Loki 0.4.0 or 0.4.1
 #
-
-# Create directory
-    cd /home/*/Downloads
-    mkdir Post-install/
-    cd Post-install/
 
 # Enable firewall
     sudo ufw default DENY
     sudo ufw enable
 
-# Total update distro
+# Update distro
     sudo apt update
-	sudo apt upgrade -y
-    sudo apt autoremove -y
-	sudo apt install -f -y
-	sudo apt update -y
+    sudo apt upgrade -y
+    sudo apt autoremove -y; sudo apt install -f -y
+    
+    sudo apt update -y
     sudo apt dist-upgrade -y
-    sudo apt autoremove -y
-	sudo apt install -f -y
+    sudo apt autoremove -y; sudo apt install -f -y
 
-# Enable PPA
+# Enable PPA on elementaryOS with
     sudo apt install -y software-properties-common
 
 # Install Preload (install, config and enable)
     sudo apt install -y preload
-	sudo sed -i 's|^cycle *=.*|cycle = 25|' /etc/preload.conf
-	sudo sed -i 's|^memfree *=.*|memfree = 60|' /etc/preload.conf
-	sudo sed -i 's|^memcached *=.*|memcached = 15|' /etc/preload.conf
-	sudo sed -i 's|^mapprefix *=.*|mapprefix = /usr/;/lib;/var/cache/;/opt/;!/|' /etc/preload.conf
-	sudo sed -i 's|^exeprefix *=.*|exeprefix = !/usr/sbin/;!/usr/local/sbin/;/usr/;/opt/;!/|' /etc/preload.conf
+    sudo sed -i 's|^cycle *=.*|cycle = 25|' /etc/preload.conf
+    sudo sed -i 's|^memfree *=.*|memfree = 60|' /etc/preload.conf
+    sudo sed -i 's|^memcached *=.*|memcached = 15|' /etc/preload.conf
+    sudo sed -i 's|^mapprefix *=.*|mapprefix = /usr/;/lib;/var/cache/;/opt/;!/|' /etc/preload.conf
+    sudo sed -i 's|^exeprefix *=.*|exeprefix = !/usr/sbin/;!/usr/local/sbin/;/usr/;/opt/;!/|' /etc/preload.conf
     sudo /etc/init.d/preload restart
 
 # Install Prelink (install, config and enable)
     sudo apt install -y prelink
-	sudo sed -i 's|^PRELINKING=unknown|PRELINKING=yes|' /etc/default/prelink
-	sudo sed -i 's|^PRELINK_OPTS=-mR|PRELINK_OPTS=-amR|' /etc/default/prelink
-	echo 'dpkg::Post-Invoke {"echo Executando prelink ...;/etc/cron.daily/prelink";}' | sudo tee /etc/apt/apt.conf.d/98prelink
-    sudo prelink -amvR
+    sudo sed -i 's|^PRELINKING=unknown|PRELINKING=yes|' /etc/default/prelink
+    sudo sed -i 's|^PRELINK_OPTS=-mR|PRELINK_OPTS=-amR|' /etc/default/prelink
+    echo 'dpkg::Post-Invoke {"echo Executando prelink ...;/etc/cron.daily/prelink";}' | sudo tee /etc/apt/apt.conf.d/98prelink
+    # sudo prelink -amvR
+    # To speed-up this installation, we will let this to final
 
 # Install dependencies, libraries, plugins (some is optional)
     sudo apt install -y ffmpeg lame #plugins for Audacity and this is optional, not needed
