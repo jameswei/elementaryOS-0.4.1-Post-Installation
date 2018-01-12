@@ -1,7 +1,10 @@
 #!/bin/bash
 
 #
+#   Created on June 2017
+#   Updated on Jan 2018
 #   PostInstallation for elementaryOS Loki 0.4.0 or 0.4.1
+#   Written by Bruno Raphael C de Mesquita - Aracaju/SE - Brazil
 #
 
 # Enable firewall
@@ -18,7 +21,8 @@
     sudo apt autoremove -y; sudo apt install -f -y
     
 # Install Ubuntu Extras
-    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections # Auto accept Eula
+    # Auto accept Eula
+    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
     sudo apt install -y ubuntu-restricted-addons ubuntu-restricted-extras
 
 # Enable PPA on elementaryOS with
@@ -35,7 +39,8 @@
 # Install GitKraken (Git GUI Freemium)
     cd /tmp
     sudo apt autoremove -y; sudo apt install -f -y
-    wget https://release.gitkraken.com/linux/gitkraken-amd64.deb # For 64 bit
+    # For 64 bit
+    wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
     sudo dpkg -i gitkraken-amd64.deb
        
 # Install Compilers (for C and C++ programmers)
@@ -59,22 +64,6 @@
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y code
-    
-    # Install Extensions
-    code --install-extension ms-vscode.csharp
-    code --install-extension lonefy.vscode-JS-CSS-HTML-formatter
-    code --install-extension joelday.docthis
-    code --install-extension robinbentley.sass-indented
-    code --install-extension formulahendry.auto-close-tag
-    code --install-extension ecmel.vscode-html-css
-    code --install-extension Zignd.html-css-class-completion
-    code --install-extension felixfbecker.php-intellisense
-    code --install-extension eg2.tslint
-    code --install-extension dbaeumer.vscode-eslint
-    code --install-extension whtsky.agila-theme
-    code --install-extension KnisterPeter.vscode-github
-    code --install-extension techer.open-in-browser
-    code --install-extension msjsdiag.debugger-for-chrome
 
 # Install MySQL Workbench
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
@@ -302,6 +291,26 @@
 # Prelink ("remember?")
     sudo prelink -amvR
     
+# Install MS VS Code Extensions
+    # Exit sudo
+    exit
+
+    # Install Extensions
+    code --install-extension ms-vscode.csharp
+    code --install-extension lonefy.vscode-JS-CSS-HTML-formatter
+    code --install-extension joelday.docthis
+    code --install-extension robinbentley.sass-indented
+    code --install-extension formulahendry.auto-close-tag
+    code --install-extension ecmel.vscode-html-css
+    code --install-extension Zignd.html-css-class-completion
+    code --install-extension felixfbecker.php-intellisense
+    code --install-extension eg2.tslint
+    code --install-extension dbaeumer.vscode-eslint
+    code --install-extension whtsky.agila-theme
+    code --install-extension KnisterPeter.vscode-github
+    code --install-extension techer.open-in-browser
+    code --install-extension msjsdiag.debugger-for-chrome
+
 # MySQL Secure ("Remember too?!")
     sudo mysql_secure_installation
     # On questions...
@@ -313,10 +322,10 @@
     # 6. Press [Enter]
 
 # Message to user
-    #clean screen
+    # clean screen
     clear
     
-    #message
+    # print end message to user
     for (( i = 30; i <= 37; i+=2 ));
     	do echo -e "\e[0;"$i"m \n\n Post-installation complete! You can restart your computer now! \n\n"; 
     done
