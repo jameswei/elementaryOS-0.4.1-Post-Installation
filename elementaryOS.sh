@@ -97,7 +97,8 @@
 
     # PHP 7.1
     sudo apt install -y php7.1 libapache2-mod-php7.1 php7.1-mysql php-common php7.1-cli php7.1-common php7.1-json php7.1-opcache php7.1-readline
-    sudo a2enmod php7.1
+    a2enmod ssl
+    a2ensite default-ssl
 
     # Restart Apache
     sudo systemctl restart apache2
@@ -120,6 +121,7 @@
     # To speed up this installation, let's leave it to the end.
 
 # Install dependencies, libraries, plugins (some is optional)
+    #sudo add-apt-repository -y ppa:kirillshkrogalev/ffmpeg-next # FFMPEG Repository
     sudo apt install -y ffmpeg lame # plugins for OBS, Audacity and others. They are optional.
     sudo apt install -y curl # enable installations via curl (sometimes it comes installed).
     sudo apt install -y cups # install a printer server (sometimes it comes installed).
@@ -182,7 +184,7 @@
     sudo apt install -y openshot openshot-doc frei0r-plugins
 
 # OBS - Open Broadcaster Studio (Screncast & Screen Recorder)
-    sudo add-apt-repository -y ppa:kirillshkrogalev/ffmpeg-next
+    sudo add-apt-repository -y ppa:obsproject/obs-studio
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y obs-studio
 
