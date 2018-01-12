@@ -27,9 +27,41 @@
 # Install Compilers (for C and C++ programmers)
     sudo apt install -y cpp g++ gcc gpp clang
     
+# Install Code::Blocks (C/C++ IDE)
+    sudo apt install -y codeblocks
+    
 # Install Lazarus (Delphi open source alternative)
     sudo apt install -y fpc fpc-source
     sudo apt install -y lazarus
+    
+# Install LAMPP Stack (Linux + Apache + MySQL/MariaDB + PHP)
+    # Apache 2 (HTTP Server)
+    sudo apt install -y apache2 apache2-utils
+    sudo chown www-data:www-data /var/www/html/ -R
+    #sudo systemctl start apache2 # Start once
+    #sudo systemctl enable apache2 # Start on boot
+    
+    # MySQL/MariaDB (Database Server)
+    sudo apt install -y mariadb-server mariadb-client
+    #sudo apt install -y mysql-server mysql-client
+    
+    #sudo systemctl start mariadb # Start once
+    #sudo systemctl enable mariadb # Start on boot
+    # or
+    #sudo systemctl start mysql # Start once
+    #sudo systemctl enable mysql # Start on boot
+    
+    #sudo mysql_secure_installation # Let's to final
+    
+    # PHP 7.1
+    sudo apt install -y php7.1 libapache2-mod-php7.1 php7.1-mysql php-common php7.1-cli php7.1-common php7.1-json php7.1-opcache php7.1-readline
+    sudo a2enmod php7.1
+    
+    # Restart Apache
+    sudo systemctl restart apache2
+  
+# Install MySQL-Workbench
+    sudo apt install -y mysql-workbench
 
 # Enable PPA on elementaryOS with
     sudo apt install -y software-properties-common
@@ -112,6 +144,11 @@
     sudo add-apt-repository -y ppa:openshot.developers/ppa
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y openshot openshot-doc frei0r-plugins
+    
+# OBS - Open Broadcaster Studio (Screncast & Screen Recorder)
+    sudo add-apt-repository -y ppa:kirillshkrogalev/ffmpeg-next
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y obs-studio
 
 # Install Kazam (Screencast and Screen Recorder) / Optional
     #sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
@@ -228,6 +265,16 @@
     
 # Prelink ("remember?")
     sudo prelink -amvR
+    
+# MySQL Secure ("Remember too?!")
+    sudo mysql_secure_installation
+    # On questions...
+    # 1. Press [Enter]
+    # 2. Enter Y to set a new password
+    # 3. Press [Enter]
+    # 4. Press [Enter]
+    # 5. Press [Enter]
+    # 6. Press [Enter]
 
 # Message to user
     #clean screen
