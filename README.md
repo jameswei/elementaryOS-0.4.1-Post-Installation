@@ -1,4 +1,4 @@
-elemementaryOS 0.4.1 Post installation script
-===============================================
+elemementaryOS Loki 0.4.0 & 0.4.1 Post Installation
+===================================================
 
-A new post install script for elementaryOS 0.4.1 Loki
+Updated 01/12/18.
