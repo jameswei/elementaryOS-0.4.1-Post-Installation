@@ -15,11 +15,11 @@
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y; sudo apt install -f -y
-    
+
     sudo apt update -y
     sudo apt dist-upgrade -y
     sudo apt autoremove -y; sudo apt install -f -y
-    
+
 # Install Ubuntu Extras
     # Auto accept Eula
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
@@ -27,26 +27,26 @@
 
 # Enable PPA on elementaryOS with
     sudo apt install -y software-properties-common
-    
+
 # Install Git (If you have not yet installed)
     sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y git git-core
-    
+
 # Install Git-Cola (Lightweight Git GUI)
     sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y git-cola
-    
+
 # Install GitKraken (Git GUI Freemium)
     cd /tmp
     sudo apt autoremove -y; sudo apt install -f -y
     # For 64 bit
     wget https://release.gitkraken.com/linux/gitkraken-amd64.deb
     sudo dpkg -i gitkraken-amd64.deb
-       
+
 # Install Compilers (for C and C++ programmers)
     sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y cpp g++ gcc gpp clang
-        
+
 # Install Code::Blocks (C/C++ IDE)
     sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y codeblocks
@@ -57,7 +57,7 @@
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt-get install -y dotnet-sdk-2.0.2
-    
+
 # Install Microsoft Visual Studio Code (w/ repository)
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
@@ -68,37 +68,37 @@
 # Install MySQL Workbench
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y mysql-workbench
-    
+
 # Install Lazarus (Delphi open source alternative)
     sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y fpc fpc-source
     sudo apt install -y lazarus
-    
+
 # Install LAMPP Stack (Linux + Apache + MySQL/MariaDB + PHP)
     sudo apt autoremove -y; sudo apt install -f -y
-    
+
     # Apache 2 (HTTP Server)
     sudo apt install -y apache2 apache2-utils
     sudo chown www-data:www-data /var/www/html/ -R
     #sudo systemctl start apache2 # Start once
     #sudo systemctl enable apache2 # Start on boot
-    
+
     # MySQL/MariaDB (Database Server)
     sudo apt install -y mariadb-server mariadb-client
     #sudo apt install -y mysql-server mysql-client
-    
+
     #sudo systemctl start mariadb # Start once
     #sudo systemctl enable mariadb # Start on boot
     # or
     #sudo systemctl start mysql # Start once
     #sudo systemctl enable mysql # Start on boot
-    
+
     #sudo mysql_secure_installation # Let's to final
-    
+
     # PHP 7.1
     sudo apt install -y php7.1 libapache2-mod-php7.1 php7.1-mysql php-common php7.1-cli php7.1-common php7.1-json php7.1-opcache php7.1-readline
     sudo a2enmod php7.1
-    
+
     # Restart Apache
     sudo systemctl restart apache2
 
@@ -137,19 +137,19 @@
     echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections # EULA Auto accept
     sudo apt install -y oracle-java8-installer
     #sudo apt install -y oracle-java9-installer #not recommended
-    
+
 # Install Google Chrome
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
     sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y google-chrome-stable
-    
+
 # Install Firefox
     sudo apt install -y firefox
-    
+
 # Install Thunderbird
     sudo apt install -y thunderbird
-    
+
 # Spotify (client)
     # 1. Add the Spotify repository signing key to be able to verify downloaded packages
     #sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
@@ -172,7 +172,7 @@
     sudo apt install -y audacity
 
 # Install Kdenlive (video editor)
-    #sudo add-apt-repository -y ppa:sunab/kdenlive-release 
+    #sudo add-apt-repository -y ppa:sunab/kdenlive-release
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y kdenlive
 
@@ -180,7 +180,7 @@
     sudo add-apt-repository -y ppa:openshot.developers/ppa
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y openshot openshot-doc frei0r-plugins
-    
+
 # OBS - Open Broadcaster Studio (Screncast & Screen Recorder)
     sudo add-apt-repository -y ppa:kirillshkrogalev/ffmpeg-next
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
@@ -189,7 +189,7 @@
 # Install Kazam (Screencast and Screen Recorder) / Optional
     #sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     #sudo apt install -y kazam
-    
+
 # Install Gaupol (Subtitle editor)
     sudo apt install -y gaupol
 
@@ -241,7 +241,7 @@
     wget http://repo.steampowered.com/steam/archive/precise/steam_latest.deb
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo dpkg -i steam_latest.deb
-    
+
 # Install Indicator Keylock (Shown "Num Lock" and "Caps Lock" activities in system tray)
     sudo add-apt-repository -y ppa:tsbarnes/indicator-keylock
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
@@ -273,12 +273,12 @@
 # Install Dconf
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y dconf-tools
-    
+
 # DupeGuru
     sudo apt-add-repository -y ppa:hsoft/ppa
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y dupeguru-se
-    
+
 # Install Wine
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y wine wine-gecko winetricks playonlinux dosbox
@@ -287,32 +287,49 @@
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y flashplugin-installer #already comes installed
     sudo apt install -y pepperflashplugin-nonfree
-    
+
 # Prelink ("remember?")
     sudo prelink -amvR
-    
+
 # Install MS VS Code Extensions
     # Exit sudo
     exit
 
     # Install Extensions
-    code --install-extension ms-vscode.csharp
-    code --install-extension lonefy.vscode-JS-CSS-HTML-formatter
-    code --install-extension joelday.docthis
-    code --install-extension robinbentley.sass-indented
-    code --install-extension formulahendry.auto-close-tag
-    code --install-extension ecmel.vscode-html-css
-    code --install-extension Zignd.html-css-class-completion
-    code --install-extension felixfbecker.php-intellisense
-    code --install-extension eg2.tslint
+    code --install-extension 2gua.rainbow-brackets
+    code --install-extension abusaidm.html-snippets
+    code --install-extension christian-kohler.path-intellisense
+    code --install-extension cssho.vscode-svgviewer
     code --install-extension dbaeumer.vscode-eslint
-    code --install-extension whtsky.agila-theme
+    code --install-extension dbankier.vscode-instant-markdown
+    code --install-extension deerawan.vscode-faker
+    code --install-extension donjayamanne.githistory
+    code --install-extension eamodio.gitlens
+    code --install-extension ecmel.vscode-html-css
+    code --install-extension eg2.tslint
+    code --install-extension felixfbecker.php-intellisense
+    code --install-extension formulahendry.auto-close-tag
+    code --install-extension formulahendry.code-runner
+    code --install-extension HookyQR.beautify
+    code --install-extension joelday.docthis
     code --install-extension KnisterPeter.vscode-github
-    code --install-extension techer.open-in-browser
+    code --install-extension lonefy.vscode-JS-CSS-HTML-formatter
+    code --install-extension ms-vscode.csharp
     code --install-extension msjsdiag.debugger-for-chrome
+    code --install-extension pranaygp.vscode-css-peek
+    code --install-extension robinbentley.sass-indented
+    code --install-extension Shan.code-settings-sync
+    code --install-extension shardulm94.trailing-spaces
+    code --install-extension shinnn.stylelint
+    code --install-extension sidthesloth.html5-boilerplate
+    code --install-extension techer.open-in-browser
+    code --install-extension waderyan.gitblame
+    code --install-extension wayou.vscode-todo-highlight
+    code --install-extension whtsky.agila-theme
+    code --install-extension Zignd.html-css-class-completion
 
 # MySQL Secure ("Remember too?!")
-    sudo mysql_secure_installation
+    mysql_secure_installation
     # On questions...
     # 1. Press [Enter]
     # 2. Enter Y to set a new password
@@ -324,8 +341,8 @@
 # Message to user
     # clean screen
     clear
-    
+
     # print end message to user
     for (( i = 30; i <= 37; i+=2 ));
-    	do echo -e "\e[0;"$i"m \n\n Post-installation complete! You can restart your computer now! \n\n"; 
+    	do echo -e "\e[0;"$i"m \n\n Post-installation complete! You can restart your computer now! \n\n";
     done
