@@ -290,6 +290,20 @@
     sudo apt install -y flashplugin-installer #already comes installed
     sudo apt install -y pepperflashplugin-nonfree
 
+# Install ZSH
+    sudo apt install -y zsh
+    # To switch to ZSH forever, do it:
+    # Open /etc/passwd in the editor
+    # change the end of the line that has your username
+    # from
+    # username:x:1000:1000:Your Name,,,:/home/username:/bin/bash
+    # to
+    # username:x:1000:1000:Your Name,,,:/home/username:/bin/zsh
+    # save the file. You to logout or reeboot.
+
+# Install Oh-My-ZSH
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 # Prelink ("remember?")
     sudo prelink -amvR
 
@@ -339,17 +353,6 @@
     # 4. Press [Enter]
     # 5. Press [Enter]
     # 6. Press [Enter]
-
-# Install ZSH
-    sudo apt install -y zsh
-    # To switch to ZSH forever, do it:
-    # Open /etc/passwd in the editor
-    # change the end of the line that has your username
-    # from
-    # username:x:1000:1000:Your Name,,,:/home/username:/bin/bash
-    # to
-    # username:x:1000:1000:Your Name,,,:/home/username:/bin/zsh
-    # save the file. You to logout or reeboot.
 
 # Message to user
     # clean screen
