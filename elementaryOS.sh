@@ -251,7 +251,7 @@
     cd /tmp
     wget http://repo.steampowered.com/steam/archive/precise/steam_latest.deb
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
-    sudo dpkg -i steam_latest.ded
+    sudo dpkg -i steam_latest.deb
     
 # Install Indicator Keylock (Shown "Num Lock" and "Caps Lock" activities in system tray)
     sudo add-apt-repository -y ppa:tsbarnes/indicator-keylock
