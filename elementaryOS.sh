@@ -34,103 +34,105 @@
     sudo sed -i 's|^PRELINKING=unknown|PRELINKING=yes|' /etc/default/prelink
     sudo sed -i 's|^PRELINK_OPTS=-mR|PRELINK_OPTS=-amR|' /etc/default/prelink
     echo 'dpkg::Post-Invoke {"echo Executando prelink ...;/etc/cron.daily/prelink";}' | sudo tee /etc/apt/apt.conf.d/98prelink
-    # sudo prelink -amvR
-    # To speed-up this installation, we will let this to final
+    #sudo prelink -amvR
+    # To speed up this installation, let's leave it to the end.
 
 # Install dependencies, libraries, plugins (some is optional)
-    sudo apt install -y ffmpeg lame #plugins for Audacity and this is optional, not needed
-    sudo apt install -y curl #enable install via curl (already comes installed)
-    sudo apt install -y cups #install a printer server (already comes installed)
-    sudo apt install -y libcurl3 libnss3-tools #for some internet banking access
-
-# Install Gdebi (an apt-get alternative)
-    sudo apt install -y gdebi gdebi-core
+    sudo apt install -y ffmpeg lame # plugins for OBS, Audacity and others. They are optional.
+    sudo apt install -y curl # enable installations via curl (sometimes it comes installed).
+    sudo apt install -y cups # install a printer server (sometimes it comes installed).
+    sudo apt install -y libcurl3 libnss3-tools # for access internet banking, like Caixa Econômica Federal (Brazil).
 
 # Install Gparted (partition manager)
-    sudo apt install -y gparted gpart
+    #sudo apt install -y gparted gpart
 
-# Install nano (text editor)
-    sudo apt install -y nano #already comes installed
+# Install P7ZIP (file compressor)
+    sudo apt install -y p7zip-full # sometimes it comes installed.
 
-# Install P7ZIP (a file compressor)
-    sudo apt install -y p7zip-full #already comes installed
+# Install Oracle Java With PPA (JRE + JDK)
+    sudo add-apt-repository -y ppa:webupd8team/java
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y oracle-java8-installer
+    #sudo apt install -y oracle-java9-installer #not recommended
 
-# Install OpenJDK 8
-    sudo apt install -y openjdk-8-jdk
-
-# Spotify Client (Cliente Spotify)
-	# 1. Add the Spotify repository signing key to be able to verify downloaded packages
-	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
-	# 2. Add the Spotify repository
-	echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-	# 3. Update list of available packages
-	sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
-	# 4. Install Spotify
-    sudo apt install -y spotify-client
+# Spotify (client)
+    # 1. Add the Spotify repository signing key to be able to verify downloaded packages
+    #sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+    # 2. Add the Spotify repository
+    #echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+    # 3. Update list of available packages
+    #sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
+    # 4. Install Spotify
+    #sudo apt install -y spotify-client
 
 # Install Rhythmbox (media player and podcast player)
-    sudo apt install -y rhythmbox rhythmbox-mozilla
+    #sudo apt install -y rhythmbox rhythmbox-mozilla
 
 # Install VLC (media player)
     sudo apt install -y vlc vlc-plugin-vlsub vlc-plugin-notify browser-plugin-vlc
 
 # Install Audacity (audio editor)
-	sudo add-apt-repository -y ppa:audacity-team/daily
-	sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
-	sudo apt install -y audacity
+    #sudo add-apt-repository -y ppa:audacity-team/daily
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y audacity
 
 # Install Kdenlive (an video editor)
-    sudo add-apt-repository -y ppa:sunab/kdenlive-release 
-    sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
+    #sudo add-apt-repository -y ppa:sunab/kdenlive-release 
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y kdenlive
 
 # Install Kazam (Screencast, screen recorder)
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y kazam
 
-# Install Gimp
-	sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
-	sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
-	sudo apt install -y gimp gmic gimp-data gimp-data-extras gimp-gmic gimp-plugin-registry gimp-ufraw gnome-xcf-thumbnailer
+# Install Gimp (Open source image editor like/alternative Photoshop)
+    #sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y gimp gmic gimp-data gimp-data-extras gimp-gmic gimp-plugin-registry gimp-ufraw gnome-xcf-thumbnailer
 
-# Install Inkscape
-	sudo add-apt-repository -y ppa:inkscape.dev/stable
-	sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
+# Install Inkscape (Open source vector editor like/alternative Corel and Illustrator)
+    #sudo add-apt-repository -y ppa:inkscape.dev/stable
+    sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
     sudo apt install -y inkscape
 
-# Install DIA
-    sudo apt install -y dia
+# Install DIA (diagrams)
+    #sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    #sudo apt install -y dia
 
-# Install Planner
+# Install Planner (Project manager like MS Project)
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y planner
 
 # Install LibreOffice
-    sudo apt install -y libreoffice libreoffice-l10n-br libreoffice-style-sifr
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y libreoffice libreoffice-style-sifr
+    sudo apt install -y libreoffice-l10n-br # Install Brazilian Portuguese language support
 
 # Install qBitTorrent (bittorrent client)
-	sudo add-apt-repository -y ppa:qbittorrent-team/qbittorrent-stable
-	sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
+    #sudo add-apt-repository -y ppa:qbittorrent-team/qbittorrent-stable
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y qbittorrent
 
 # Install YouTube Downloader (w/ graphical interface)
     sudo add-apt-repository -y ppa:nilarimogard/webupd8
-    sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt-get install -y youtube-dl youtube-dlg
 
-# Install Caffeine Plus (appears on system tray)
-    #sudo add-apt-repository -y ppa:nilarimogard/webupd8 #(previously added)
-    sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
+# Install Caffeine Plus (Shown in system tray)
+    #sudo add-apt-repository -y ppa:nilarimogard/webupd8 # it is not necessary. Added above.
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y caffeine-plus
 
-# Install Netspeed Indicator (appears on system tray)
+# Install Netspeed Indicator (Shown in system tray)
     #sudo add-apt-repository -y ppa:nilarimogard/webupd8 #(previously added)
-    sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y indicator-netspeed
 
-# Install Microsoft Visual Studio Code
-	wget https://go.microsoft.com/fwlink/?LinkID=760868 -O visual_code.deb
-	chmod +x visual_code.deb
-	sudo dpkg -i visual_code.deb
-    rm visual_code.deb
+# Install Microsoft Visual Studio Code (w/ repository)
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y	
 
 # Install MySQL Workbench
     sudo apt install -y mysql-workbench
