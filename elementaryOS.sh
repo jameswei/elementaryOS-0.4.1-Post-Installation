@@ -20,21 +20,74 @@
 # Install Ubuntu Extras
     echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections # Auto accept Eula
     sudo apt install -y ubuntu-restricted-addons ubuntu-restricted-extras
+
+# Enable PPA on elementaryOS with
+    sudo apt install -y software-properties-common
     
 # Install Git (If you have not yet installed)
+    sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y git git-core
     
-# Install Compilers (for C and C++ programmers)
-    sudo apt install -y cpp g++ gcc gpp clang
+# Install Git-Cola (Lightweight Git GUI)
+    sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y git-cola
     
+# Install GitKraken (Git GUI Freemium)
+    cd /tmp
+    sudo apt autoremove -y; sudo apt install -f -y
+    wget https://release.gitkraken.com/linux/gitkraken-amd64.deb # For 64 bit
+    sudo dpkg -i gitkraken-amd64.deb
+       
+# Install Compilers (for C and C++ programmers)
+    sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y cpp g++ gcc gpp clang
+        
 # Install Code::Blocks (C/C++ IDE)
+    sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y codeblocks
+
+# Install C# & .NET compilers (For C# & .NET Programmers)
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt-get install -y dotnet-sdk-2.0.2
+    
+# Install Microsoft Visual Studio Code (w/ repository)
+    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y code
+    
+    # Install Extensions
+    code --install-extension ms-vscode.csharp
+    code --install-extension lonefy.vscode-JS-CSS-HTML-formatter
+    code --install-extension joelday.docthis
+    code --install-extension robinbentley.sass-indented
+    code --install-extension formulahendry.auto-close-tag
+    code --install-extension ecmel.vscode-html-css
+    code --install-extension Zignd.html-css-class-completion
+    code --install-extension felixfbecker.php-intellisense
+    code --install-extension eg2.tslint
+    code --install-extension dbaeumer.vscode-eslint
+    code --install-extension whtsky.agila-theme
+    code --install-extension KnisterPeter.vscode-github
+    code --install-extension techer.open-in-browser
+    code --install-extension msjsdiag.debugger-for-chrome
+
+# Install MySQL Workbench
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y mysql-workbench
     
 # Install Lazarus (Delphi open source alternative)
+    sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y fpc fpc-source
     sudo apt install -y lazarus
     
 # Install LAMPP Stack (Linux + Apache + MySQL/MariaDB + PHP)
+    sudo apt autoremove -y; sudo apt install -f -y
+    
     # Apache 2 (HTTP Server)
     sudo apt install -y apache2 apache2-utils
     sudo chown www-data:www-data /var/www/html/ -R
@@ -59,12 +112,6 @@
     
     # Restart Apache
     sudo systemctl restart apache2
-  
-# Install MySQL-Workbench
-    sudo apt install -y mysql-workbench
-
-# Enable PPA on elementaryOS with
-    sudo apt install -y software-properties-common
 
 # Install Preload (install, config and enable)
     sudo apt install -y preload
@@ -199,17 +246,6 @@
     #sudo add-apt-repository -y ppa:nilarimogard/webupd8 #(previously added)
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y indicator-netspeed
-
-# Install Microsoft Visual Studio Code (w/ repository)
-    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-    sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
-    sudo apt install -y code
-
-# Install MySQL Workbench
-    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
-    sudo apt install -y mysql-workbench
 
 # Install Steam (games)
     cd /tmp
