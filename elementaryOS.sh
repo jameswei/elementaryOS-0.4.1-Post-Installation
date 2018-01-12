@@ -16,6 +16,20 @@
     sudo apt update -y
     sudo apt dist-upgrade -y
     sudo apt autoremove -y; sudo apt install -f -y
+    
+# Install Ubuntu Extras
+    echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections # Auto accept Eula
+    sudo apt install -y ubuntu-restricted-addons ubuntu-restricted-extras
+    
+# Install Git (If you have not yet installed)
+    sudo apt install -y git git-core
+    
+# Install Compilers (for C and C++ programmers)
+    sudo apt install -y cpp g++ gcc gpp clang
+    
+# Install Lazarus (Delphi open source alternative)
+    sudo apt install -y fpc fpc-source
+    sudo apt install -y lazarus
 
 # Enable PPA on elementaryOS with
     sudo apt install -y software-properties-common
@@ -52,9 +66,22 @@
 # Install Oracle Java With PPA (JRE + JDK)
     sudo add-apt-repository -y ppa:webupd8team/java
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections # EULA Auto accept
     sudo apt install -y oracle-java8-installer
     #sudo apt install -y oracle-java9-installer #not recommended
-
+    
+# Install Google Chrome
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y google-chrome-stable
+    
+# Install Firefox
+    sudo apt install -y firefox
+    
+# Install Thunderbird
+    sudo apt install -y thunderbird
+    
 # Spotify (client)
     # 1. Add the Spotify repository signing key to be able to verify downloaded packages
     #sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
@@ -76,16 +103,24 @@
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y audacity
 
-# Install Kdenlive (an video editor)
+# Install Kdenlive (video editor)
     #sudo add-apt-repository -y ppa:sunab/kdenlive-release 
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y kdenlive
 
-# Install Kazam (Screencast, screen recorder)
+# OpenShot (Editor de Vídeo)
+    sudo add-apt-repository -y ppa:openshot.developers/ppa
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
-    sudo apt install -y kazam
+    sudo apt install -y openshot openshot-doc frei0r-plugins
 
-# Install Gimp (Open source image editor like/alternative Photoshop)
+# Install Kazam (Screencast and Screen Recorder) / Optional
+    #sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    #sudo apt install -y kazam
+    
+# Install Gaupol (Subtitle editor)
+    sudo apt install -y gaupol
+
+# Install Gimp (Photoshop open source alternative )
     #sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y gimp gmic gimp-data gimp-data-extras gimp-gmic gimp-plugin-registry gimp-ufraw gnome-xcf-thumbnailer
@@ -132,70 +167,73 @@
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y	
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y code
 
 # Install MySQL Workbench
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y mysql-workbench
 
 # Install Steam (games)
+    cd /tmp
     wget http://repo.steampowered.com/steam/archive/precise/steam_latest.deb
-    sudo gdebi -n steam_latest.deb
-    sudo apt-get install -f
-
-# Install Indicator Keylock
-	sudo add-apt-repository -y ppa:tsbarnes/indicator-keylock
-	sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo dpkg -i steam_latest.ded
+    
+# Install Indicator Keylock (Shown "Num Lock" and "Caps Lock" activities in system tray)
+    sudo add-apt-repository -y ppa:tsbarnes/indicator-keylock
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y indicator-keylock
 
-# Install Pomodoro Timer for GNOME
-    curl -L http://download.opensuse.org/repositories/home:kamilprusko/xUbuntu_16.04/Release.key | sudo apt-key add -
-    sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:kamilprusko/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/gnome-pomodoro.list"
-    sudo apt update
-    sudo apt install gnome-pomodoro
-
-# Install Paper Themes
-	sudo add-apt-repository -y ppa:snwh/pulp
-	sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
-	sudo apt install -y paper-gtk-theme
+# Install Paper Themes (Window, Icon and Mouse Cursor)
+    sudo add-apt-repository -y ppa:snwh/pulp
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    #sudo apt install -y paper-gtk-theme
     sudo apt install -y paper-icon-theme
     sudo apt install -y paper-cursor-theme
 
-# Install Docky (a simple dock like Plank elementaryOS) / Optional to change later
-	#sudo add-apt-repository -y ppa:docky-core/ppa
-	#sudo add-apt-repository -y ppa:docky-core/stable
-    sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
+# Install Docky (a simple dock like Plank elementaryOS) / Optional.
+    #sudo add-apt-repository -y ppa:docky-core/ppa
+    #sudo add-apt-repository -y ppa:docky-core/stable
+    #sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
     #sudo apt install -y docky
 
-# Install Plank (dock like elementaryOS) / Optional to change later
+# Install Plank (dock like elementaryOS) / Optional, because it comes installed.
     #sudo add-apt-repository -y ppa:ricotz/docky
-    sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
+    #sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
     #sudo apt install -y plank
 
 # Install Elementary Tweaks (for Loki 0.4 and 0.4.1)
-	sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
-	sudo apt update;sudo apt autoremove -y;sudo apt install -f -y
+    sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y elementary-tweaks
 
 # Install Dconf
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y dconf-tools
+    
+# DupeGuru
+    sudo apt-add-repository -y ppa:hsoft/ppa
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y dupeguru-se
+    
+# Install Wine
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y wine wine-gecko winetricks playonlinux dosbox
 
 # Install Flash Players (optional)
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y flashplugin-installer #already comes installed
     sudo apt install -y pepperflashplugin-nonfree
+    
+# Prelink ("remember?")
+    sudo prelink -amvR
 
 # Message to user
     #clean screen
     clear
-    #print blank lines
-    printf "\n\n\n\n\n\n"
-    #messages
-    for (( i = 30; i <= 37; i++ )); 
-        do echo -e "\e[0;"$i"m  The system will reboot in 10 seconds..."; 
+    
+    #message
+    for (( i = 30; i <= 37; i+=2 ));
+    	do echo -e "\e[0;"$i"m \n\n Post-installation complete! You can restart your computer now! \n\n"; 
     done
-    #print blank lines
-    printf "\n\n\n\n\n\n"
-    #sleep for 10 secs
-    sleep 10
-
-# Reboot
-    reboot
