@@ -228,26 +228,36 @@
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt-get install -y youtube-dl youtube-dlg
 
-# Install Caffeine Plus (Shown in system tray)
-    #sudo add-apt-repository -y ppa:nilarimogard/webupd8 # it is not necessary. Added above.
-    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
-    sudo apt install -y caffeine-plus
-
-# Install Netspeed Indicator (Shown in system tray)
-    #sudo add-apt-repository -y ppa:nilarimogard/webupd8 #(previously added)
-    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
-    sudo apt install -y indicator-netspeed
-
 # Install Steam (games)
     cd /tmp
     wget http://repo.steampowered.com/steam/archive/precise/steam_latest.deb
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo dpkg -i steam_latest.deb
 
+# Install Caffeine Plus (Shown in system tray)
+    #sudo add-apt-repository -y ppa:nilarimogard/webupd8 # it is not necessary. Added above.
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt install -y caffeine-plus
+
+# Install Netspeed Indicator (Shown in system tray) # Disabled. Using System Monitor.
+    #sudo add-apt-repository -y ppa:nilarimogard/webupd8 #(previously added)
+    #sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    #sudo apt install -y indicator-netspeed
+
+# Install Wheater Indicator
+    sudo add-apt-repository -y ppa:atareao/atareao
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt-get install -y my-weather-indicator
+
 # Install Indicator Keylock (Shown "Num Lock" and "Caps Lock" activities in system tray)
     sudo add-apt-repository -y ppa:tsbarnes/indicator-keylock
     sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
     sudo apt install -y indicator-keylock
+
+# Install System Monitor (Shown in system tray)
+    sudo add-apt-repository -y ppa:fossfreedom/indicator-sysmonitor
+    sudo apt update; sudo apt autoremove -y; sudo apt install -f -y
+    sudo apt-get install -y indicator-sysmonitor
 
 # Install Paper Themes (Window, Icon and Mouse Cursor)
     sudo add-apt-repository -y ppa:snwh/pulp
@@ -306,6 +316,10 @@
 
 # Prelink ("remember?")
     sudo prelink -amvR
+
+# Install Oracle IDE NetBeans
+    cd /tmp
+    sh -c "$(wget http://download.netbeans.org/netbeans/8.2/final/bundles/netbeans-8.2-linux.sh -O -)"
 
 # Install MS VS Code Extensions
     # Exit sudo
